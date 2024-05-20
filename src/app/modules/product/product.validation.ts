@@ -10,7 +10,7 @@ const InventorySchema = z.object({
   inStock: z.boolean(),
 });
 
-export const ProductDataSchema = z.object({
+export const ProductValidationDataSchema = z.object({
   name: z.string(),
   description: z.string(),
   price: z.number(),

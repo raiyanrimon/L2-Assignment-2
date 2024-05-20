@@ -1,7 +1,24 @@
 import { Schema, model } from "mongoose";
 import { ProductData } from "./product.interface";
-import { ProductDataSchema } from "./product.validation";
 
-const productSchema = new Schema<ProductData>(ProductDataSchema);
+const VariantSchema = new Schema({
+  type: String,
+  value: String,
+});
 
-export const ProductModel = model("Product", productSchema);
+const InventorySchema = new Schema({
+  quantity: Number,
+  inStock: Boolean,
+});
+
+const ProductSchema = new Schema<ProductData>({
+  name: String,
+  description: String,
+  price: Number,
+  category: String,
+  tags: [String],
+  variants: [VariantSchema],
+  inventory: InventorySchema,
+});
+
+export const ProductModel = model("Product", ProductSchema);
