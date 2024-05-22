@@ -11,6 +11,15 @@ Before running the application, make sure you have the following installed on yo
 - Node.js and npm (Node Package Manager)
 - MongoDB (Make sure MongoDB is installed and running locally)
 
+## Configuration
+
+Before running the application, configure the MongoDB connection string in the app/config.ts file:
+
+```bash
+DB_URL=mongodb+srv://assignment2:assignment2@cluster0.hif0lwq.mongodb.net/assignment-2?retryWrites=true&w=majority&appName=Cluster0
+PORT=5000
+```
+
 ## Installation
 
 1. Clone the git repo and install node modules
