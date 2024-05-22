@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./product.service";
 import { ProductValidationDataSchema } from "./product.validation";
+import { string, unknown } from "zod";
 
 const createProduct = async (req: Request, res: Response) => {
   try {
@@ -21,18 +22,20 @@ const createProduct = async (req: Request, res: Response) => {
 };
 const getAllProducts = async (req: Request, res: Response) => {
   try {
-    const searchTerm = (req.query.searchTerm as string) || "";
+    const searchTerm = req.query.searchTerm as string;
     const result = await ProductServices.getAllProductsFromDB(searchTerm);
 
     res.status(200).json({
       success: true,
-      message: `Products matching search term '${searchTerm}' fetched successfully!`,
+      message: searchTerm
+        ? `Products matching search term '${searchTerm}' fetched successfully!`
+        : "Products fetched successfully!",
       data: result,
     });
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: "An Error occurred",
+      message: "Products Not Found",
     });
   }
 };
@@ -42,14 +45,6 @@ const getSingleProduct = async (req: Request, res: Response) => {
     const { productId } = req.params;
 
     const result = await ProductServices.getSingleProductFromDB(productId);
-
-    if (!result) {
-      return res.status(404).json({
-        success: false,
-        message: "Product not found",
-      });
-    }
-
     res.status(200).json({
       success: true,
       message: "Product fetched successfully!",
@@ -58,7 +53,7 @@ const getSingleProduct = async (req: Request, res: Response) => {
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: "An Error occurred",
+      message: "Product Not Found",
     });
   }
 };
@@ -67,18 +62,11 @@ const updateProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
     const updatedProduct = req.body;
-
+    const zodParsedProduct = ProductValidationDataSchema.parse(updatedProduct);
     const result = await ProductServices.updateSingleProductFromDB(
       productId,
-      updatedProduct
+      zodParsedProduct
     );
-
-    if (!result) {
-      return res.status(404).json({
-        success: false,
-        message: "Product not found",
-      });
-    }
 
     res.status(200).json({
       success: true,
@@ -86,10 +74,9 @@ const updateProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json({
       success: false,
-      message: "An Error occurred",
+      message: "something went wrong",
     });
   }
 };
