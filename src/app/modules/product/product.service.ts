@@ -6,9 +6,14 @@ const createProductsIntoDB = async (product: ProductData) => {
   return result;
 };
 
-const getAllProductsFromDB = async () => {
-  const result = await ProductModel.find();
-  return result;
+const getAllProductsFromDB = async (searchTerm?: string) => {
+  try {
+    const query = searchTerm ? { name: new RegExp(searchTerm, "i") } : {};
+    const result = await ProductModel.find(query);
+    return result;
+  } catch (error) {
+    throw new Error("Error fetching products from database");
+  }
 };
 
 const getSingleProductFromDB = async (productId: string) => {
