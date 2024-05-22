@@ -29,9 +29,9 @@ npm i
 GET
 ```
 
-### Product API route
+# Product API route
 
-# Product Data Types:
+### Product Data Types:
 
 ```typescript
 name: string;
@@ -49,18 +49,18 @@ inventory: {
 ```
 
 | **Operation**               | **API**                                                           | **Type** |
-| :-------------------------- | :---------------------------------------------------------------- | :------- | --- |
+| :-------------------------- | :---------------------------------------------------------------- | :------- |
 | `Create Product`            | `https://blood-bound.vercel.app/api/products`                     | `POST`   |
 | `Get Products`              | `https://blood-bound.vercel.app/api/products`                     | `GET`    |
-|                             |
-| `Get Single Product`        | `https://blood-bound.vercel.app/api/products/${productId}`        | `GET`    |     |
-| `Delete Product`            | `https://blood-bound.vercel.app/api/products/${productId}`        | `DELETE` |     |
-| `Update Product`            | `https://blood-bound.vercel.app/api/products/${productId}`        | `PUT`    |     |
+|                             |                                                                   |          |
+| `Get Single Product`        | `https://blood-bound.vercel.app/api/products/${productId}`        | `GET`    |
+| `Delete Product`            | `https://blood-bound.vercel.app/api/products/${productId}`        | `DELETE` |
+| `Update Product`            | `https://blood-bound.vercel.app/api/products/${productId}`        | `PUT`    |
 | `Get Product by SearchTerm` | `https://blood-bound.vercel.app/api/products?searchTerm=${value}` | `GET`    |
 
-### Order API route
+# Order API route
 
-# Order Data Types:
+### Order Data Types:
 
 ```typescript
 email: string;
