@@ -1,5 +1,5 @@
 import { z } from "zod";
-
+// validation via zod
 const VariantSchema = z.object({
   type: z.string(),
   value: z.string(),

@@ -11,8 +11,9 @@ const InventorySchema = new Schema({
   inStock: Boolean,
 });
 
+//creating product Schema
 const ProductSchema = new Schema<ProductData>({
-  name: String,
+  name: { type: String, unique: true },
   description: String,
   price: Number,
   category: String,

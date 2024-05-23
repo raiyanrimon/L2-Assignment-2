@@ -1,3 +1,5 @@
+// creating interface
+
 interface Variant {
   type: string;
   value: string;

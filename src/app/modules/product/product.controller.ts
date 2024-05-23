@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./product.service";
 import { ProductValidationDataSchema } from "./product.validation";
-import { string, unknown } from "zod";
 
+// createProduct api controller
 const createProduct = async (req: Request, res: Response) => {
   try {
     const { product: ProductData } = req.body;
@@ -16,10 +16,12 @@ const createProduct = async (req: Request, res: Response) => {
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: "An Error occurred",
+      message: "Something went wrong and Product is not created",
     });
   }
 };
+
+// getAllProducts api controller
 const getAllProducts = async (req: Request, res: Response) => {
   try {
     const searchTerm = req.query.searchTerm as string;
@@ -40,6 +42,7 @@ const getAllProducts = async (req: Request, res: Response) => {
   }
 };
 
+// getSingleProduct api controller
 const getSingleProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
@@ -58,6 +61,7 @@ const getSingleProduct = async (req: Request, res: Response) => {
   }
 };
 
+// updateProduct api controller
 const updateProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
@@ -80,6 +84,8 @@ const updateProduct = async (req: Request, res: Response) => {
     });
   }
 };
+
+// DeleteProduct api controller
 const deleteProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
@@ -90,7 +96,6 @@ const deleteProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json({
       success: false,
       message: "An Error occurred",

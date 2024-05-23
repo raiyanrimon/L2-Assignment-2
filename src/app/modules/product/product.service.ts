@@ -8,6 +8,7 @@ const createProductsIntoDB = async (product: ProductData) => {
 
 const getAllProductsFromDB = async (searchTerm: string) => {
   try {
+    // searchTerm Query
     const query = {
       $or: [
         { name: new RegExp(searchTerm, "i") },
@@ -36,7 +37,7 @@ const getSingleProductFromDB = async (productId: string) => {
 
 const updateSingleProductFromDB = async (
   productId: string,
-  updatedProduct: any
+  updatedProduct: ProductData
 ) => {
   const result = await ProductModel.findOneAndUpdate(
     { _id: productId },

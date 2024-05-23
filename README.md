@@ -36,6 +36,7 @@ npm i
 
 ```
 GET
+https://l2-assignment-2-theta.vercel.app/
 ```
 
 # Product API route
@@ -57,15 +58,15 @@ inventory: {
   inStock: boolean };
 ```
 
-| **Operation**               | **API**                                                           | **Type** |
-| :-------------------------- | :---------------------------------------------------------------- | :------- |
-| `Create Product`            | `https://blood-bound.vercel.app/api/products`                     | `POST`   |
-| `Get Products`              | `https://blood-bound.vercel.app/api/products`                     | `GET`    |
-|                             |                                                                   |          |
-| `Get Single Product`        | `https://blood-bound.vercel.app/api/products/${productId}`        | `GET`    |
-| `Delete Product`            | `https://blood-bound.vercel.app/api/products/${productId}`        | `DELETE` |
-| `Update Product`            | `https://blood-bound.vercel.app/api/products/${productId}`        | `PUT`    |
-| `Get Product by SearchTerm` | `https://blood-bound.vercel.app/api/products?searchTerm=${value}` | `GET`    |
+| **Operation**               | **API**                                                                     | **Type** |
+| :-------------------------- | :-------------------------------------------------------------------------- | :------- |
+| `Create Product`            | `https://l2-assignment-2-theta.vercel.app/api/products`                     | `POST`   |
+| `Get Products`              | `https://l2-assignment-2-theta.vercel.app/api/products`                     | `GET`    |
+|                             |                                                                             |          |
+| `Get Single Product`        | `https://l2-assignment-2-theta.vercel.app/api/products/${productId}`        | `GET`    |
+| `Delete Product`            | `https://l2-assignment-2-theta.vercel.app/api/products/${productId}`        | `DELETE` |
+| `Update Product`            | `https://l2-assignment-2-theta.vercel.app/api/products/${productId}`        | `PUT`    |
+| `Get Product by SearchTerm` | `https://l2-assignment-2-theta.vercel.app/api/products?searchTerm=${value}` | `GET`    |
 
 # Order API route
 
@@ -78,9 +79,9 @@ price: number;
 quantity: number;
 ```
 
-| **Operation**         | **API**                                               | **Type** |
-| :-------------------- | :---------------------------------------------------- | :------- |
-| `Create Order`        | `https://blood-bound.vercel.app/api/orders`           | `POST`   |
-| `Get Orders`          | `https://blood-bound.vercel.app/api/products`         | `GET`    |
+| **Operation**         | **API**                                                              | **Type** |
+| :-------------------- | :------------------------------------------------------------------- | :------- |
+| `Create Order`        | `https://l2-assignment-2-theta.vercel.app/api/orders`                | `POST`   |
+| `Get Orders`          | `https://l2-assignment-2-theta.vercel.app/api/products`              | `GET`    |
 |                       |
-| `Get Order by Email ` | `https://blood-bound.vercel.app/api/orders?email=${}` | `GET`    |
+| `Get Order by Email ` | `https://l2-assignment-2-theta.vercel.app/api/orders?email=${email}` | `GET`    |

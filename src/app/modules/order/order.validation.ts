@@ -1,5 +1,5 @@
 import { z } from "zod";
-
+// validation via zod
 export const orderValidationDataSchema = z.object({
   email: z.string().email(),
   productId: z.string().nonempty(),

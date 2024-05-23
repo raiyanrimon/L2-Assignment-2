@@ -1,6 +1,6 @@
 import { OrderData } from "./order.interface";
 import { OrderModel } from "./order.model";
-
+// services
 const createOrdersIntoDB = async (order: OrderData) => {
   const result = await OrderModel.create(order);
   return result;
