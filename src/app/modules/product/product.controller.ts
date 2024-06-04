@@ -5,8 +5,8 @@ import { ProductValidationDataSchema } from "./product.validation";
 // createProduct api controller
 const createProduct = async (req: Request, res: Response) => {
   try {
-    const { product: ProductData } = req.body;
-    const zodParsedProduct = ProductValidationDataSchema.parse(ProductData);
+    const productData = req.body;
+    const zodParsedProduct = ProductValidationDataSchema.parse(productData);
     const result = await ProductServices.createProductsIntoDB(zodParsedProduct);
     res.status(200).json({
       success: true,
@@ -16,7 +16,8 @@ const createProduct = async (req: Request, res: Response) => {
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: "Something went wrong and Product is not created",
+      message:
+        "Something went wrong and product is not created and should be unique ",
     });
   }
 };

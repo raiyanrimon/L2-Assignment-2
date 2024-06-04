@@ -7,9 +7,9 @@ import { ProductModel } from "../product/product.model";
 const createOrdersIntoDB = async (req: Request, res: Response) => {
   try {
     // getting orderData from client
-    const { order: OrderData } = req.body;
+    const orderData = req.body;
     // destructuring for finding product  by productId
-    const { productId, quantity } = OrderData;
+    const { productId, quantity } = orderData;
 
     const product = await ProductModel.findById(productId);
     if (!product) {
@@ -32,7 +32,7 @@ const createOrdersIntoDB = async (req: Request, res: Response) => {
     // saving inventory updated quantity to database
     await product.save();
     // validating data via zod validator
-    const zodParsedOrder = orderValidationDataSchema.parse(OrderData);
+    const zodParsedOrder = orderValidationDataSchema.parse(orderData);
     const result = await OrderServices.createOrdersIntoDB(zodParsedOrder);
     res.status(200).json({
       success: true,
